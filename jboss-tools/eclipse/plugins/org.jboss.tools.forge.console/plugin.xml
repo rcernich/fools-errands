@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.console.consoleFactories">
+      <consoleFactory
+            class="org.jboss.tools.forge.console.ForgeConsoleFactory"
+            label="Forge Console">
+      </consoleFactory>
+   </extension>
+   <extension
+         point="org.eclipse.ui.console.consolePageParticipants">
+      <consolePageParticipant
+            class="org.jboss.tools.forge.console.ForgeConsolePageParticipant"
+            id="org.jboss.tools.forge.console.consolePageParticipant">
+         <enablement>
+            <instanceof
+                  value="org.jboss.tools.forge.console.ForgeConsole">
+            </instanceof>
+         </enablement>
+      </consolePageParticipant>
+   </extension>
+
+</plugin>
