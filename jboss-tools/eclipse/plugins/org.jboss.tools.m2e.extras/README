@@ -1,0 +1,31 @@
+Provided extensions:
+	org.jboss.tools.m2e.extras.genericSourceConfigurator
+		Adds support for generic source generating plugins.  Provides:
+			Executes the plugin during full builds (i.e. no incremental support)
+			Refreshes the output folder used by the plugin.  The output folder
+				property used by the plugin can be configured within the
+				lifecycle mapping configuration.
+			Source folders are configured based on the execution phase:
+				*-sources phases are configured as source folders.
+				*-resources phases are configured as resource folders.
+			Build output folders are configured based on the execution phase:
+				*-test-* are configured for output to test build output.
+				other folders are configured for normal build output. 
+		Limitations:
+			Does not scan input folders, hence no support for incremental builds.
+			Does not provide any support for "clean."  Output folders must be
+				cleaned using mvn clean.
+
+	org.jboss.tools.m2e.extras.dependencyUnpackConfigurator
+		Adds support for dependency:unpack goal.
+			Behavior is similar to that of the genericSourceConfigurator.
+
+	org.jboss.tools.m2e.extras.dependencyCopyDependenciesConfigurator
+			*Note, this extension does not function correctly.
+		Adds support for dependency:copy-dependencies goal.  Provides:
+			Executes plugin during full builds (i.e. no incremental support).
+			Refreshes output folders used by the plugin.
+			Can be configured to have copied dependencies added to build
+				classpath using the "configureClasspath" setting in the
+				lifecycle mapping configuration.
+

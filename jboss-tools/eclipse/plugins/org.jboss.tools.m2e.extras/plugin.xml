@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.m2e.core.projectConfigurators">
+      <configurator
+            class="org.jboss.tools.m2e.extras.BuildPathContributorProjectConfigurator"
+            id="org.jboss.tools.m2e.extras.genericSourceConfigurator"
+            name="generic re-source generator configurator">
+      </configurator>
+      <configurator
+            class="org.jboss.tools.m2e.extras.DependencyUnpackProjectConfigurator"
+            id="org.jboss.tools.m2e.extras.dependencyUnpackConfigurator"
+            name="dependency unpack configurator">
+      </configurator>
+      <configurator
+            class="org.jboss.tools.m2e.extras.DependencyCopyDependenciesProjectConfigurator"
+            id="org.jboss.tools.m2e.extras.dependencyCopyDependenciesConfigurator"
+            name="dependency copy-dependencies configurator">
+      </configurator>
+   </extension>
+   <extension
+         point="org.eclipse.m2e.core.lifecycleMappingMetadataSource">
+   </extension>
+</plugin>
