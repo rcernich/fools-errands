@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="Weld OSGi Integration Update Site">
+      This is the update site for the Weld OSGi integration feature.
+   </description>
+   <feature url="features/org.jboss.weld.osgi_0.0.0.jar" id="org.jboss.weld.osgi" version="0.0.0">
+      <category name="weld-osgi.category"/>
+   </feature>
+   <category-def name="weld-osgi.category" label="Weld OSGi Integration">
+      <description>
+         Provides Weld CDI support for OSGi bundles (Eclipse plugins).
+      </description>
+   </category-def>
+</site>
