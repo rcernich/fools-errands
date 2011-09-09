@@ -41,17 +41,17 @@ import org.eclipse.m2e.jdt.AbstractJavaProjectConfigurator;
 import org.eclipse.m2e.jdt.IClasspathDescriptor;
 
 /**
- * DependencyCopyDependenciesProjectConfigurator
+ * DependencyCopyProjectConfigurator
  * 
  * Configures additional classpath entries for dependencies added through
- * maven-dependency-plugin copy-dependencies execution.
+ * maven-dependency-plugin copy execution.
  * 
  * @author Rob Cernich
  */
-public class DependencyCopyDependenciesProjectConfigurator extends AbstractJavaProjectConfigurator {
+public class DependencyCopyProjectConfigurator extends AbstractJavaProjectConfigurator {
 
     public static final String OUTPUT_DIRECTORY = "outputDirectory";
-    private static final String CONFIGURATOR_ID = "org.jboss.tools.m2e.extras.dependencyCopyDependenciesConfigurator";
+    private static final String CONFIGURATOR_ID = "org.jboss.tools.m2e.extras.dependencyCopyConfigurator";
     private static final String CONFIGURE_CLASSPATH_PROPERTY = "configureClasspath";
 
     @Override

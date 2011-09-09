@@ -14,9 +14,9 @@
             name="dependency unpack configurator">
       </configurator>
       <configurator
-            class="org.jboss.tools.m2e.extras.DependencyCopyDependenciesProjectConfigurator"
-            id="org.jboss.tools.m2e.extras.dependencyCopyDependenciesConfigurator"
-            name="dependency copy-dependencies configurator">
+            class="org.jboss.tools.m2e.extras.DependencyCopyProjectConfigurator"
+            id="org.jboss.tools.m2e.extras.dependencyCopyConfigurator"
+            name="dependency copy configurator">
       </configurator>
    </extension>
    <extension

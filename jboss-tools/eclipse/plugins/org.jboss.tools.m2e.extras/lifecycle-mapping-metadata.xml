@@ -22,12 +22,12 @@
         <artifactId>maven-dependency-plugin</artifactId>
         <versionRange>[1.0,)</versionRange>
         <goals>
-          <goal>copy-dependencies</goal>
+          <goal>copy</goal>
         </goals>
       </pluginExecutionFilter>
       <action>
         <configurator>
-          <id>org.jboss.tools.m2e.extras.dependencyCopyDependenciesConfigurator</id>
+          <id>org.jboss.tools.m2e.extras.dependencyCopyConfigurator</id>
         </configurator>
       </action>
     </pluginExecution>

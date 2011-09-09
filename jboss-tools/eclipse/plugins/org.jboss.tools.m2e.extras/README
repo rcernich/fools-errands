@@ -20,9 +20,8 @@ Provided extensions:
 		Adds support for dependency:unpack goal.
 			Behavior is similar to that of the genericSourceConfigurator.
 
-	org.jboss.tools.m2e.extras.dependencyCopyDependenciesConfigurator
-			*Note, this extension does not function correctly.
-		Adds support for dependency:copy-dependencies goal.  Provides:
+	org.jboss.tools.m2e.extras.dependencyCopyConfigurator
+		Adds support for dependency:copy goal.  Provides:
 			Executes plugin during full builds (i.e. no incremental support).
 			Refreshes output folders used by the plugin.
 			Can be configured to have copied dependencies added to build
