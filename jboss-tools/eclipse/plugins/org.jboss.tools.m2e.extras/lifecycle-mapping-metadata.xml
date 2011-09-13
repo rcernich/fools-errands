@@ -33,6 +33,22 @@
     </pluginExecution>
     <pluginExecution>
       <pluginExecutionFilter>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+        <versionRange>[2.1,)</versionRange>
+        <goals>
+          <goal>default-clean</goal>
+          <goal>clean</goal>
+        </goals>
+      </pluginExecutionFilter>
+      <action>
+        <configurator>
+          <id>org.jboss.tools.m2e.extras.cleanConfigurator</id>
+        </configurator>
+      </action>
+    </pluginExecution>
+    <pluginExecution>
+      <pluginExecutionFilter>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
         <versionRange>[2.0,)</versionRange>

@@ -29,6 +29,8 @@ import org.eclipse.m2e.core.project.IMavenProjectFacade;
 import org.eclipse.m2e.core.project.configurator.MojoExecutionKey;
 
 public class Util {
+    
+    public static final String PLUGIN_ID = "org.jboss.tools.m2e.extras";
 
     public static IPluginExecutionMetadata getPluginExecutionMetadata(String configuratorId,
             IMavenProjectFacade projectFacade, MojoExecution execution) {

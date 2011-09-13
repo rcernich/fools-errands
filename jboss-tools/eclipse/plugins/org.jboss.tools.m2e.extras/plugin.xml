@@ -18,6 +18,11 @@
             id="org.jboss.tools.m2e.extras.dependencyCopyConfigurator"
             name="dependency copy configurator">
       </configurator>
+      <configurator
+            class="org.jboss.tools.m2e.extras.CleanProjectConfigurator"
+            id="org.jboss.tools.m2e.extras.cleanConfigurator"
+            name="clean configurator">
+      </configurator>
    </extension>
    <extension
          point="org.eclipse.m2e.core.lifecycleMappingMetadataSource">
