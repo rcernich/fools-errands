@@ -23,6 +23,11 @@
             id="org.jboss.tools.m2e.extras.cleanConfigurator"
             name="clean configurator">
       </configurator>
+      <configurator
+            class="org.jboss.tools.m2e.extras.AptProjectConfigurator"
+            id="org.jboss.tools.m2e.extras.aptConfigurator"
+            name="apt configurator">
+      </configurator>
    </extension>
    <extension
          point="org.eclipse.m2e.core.lifecycleMappingMetadataSource">
