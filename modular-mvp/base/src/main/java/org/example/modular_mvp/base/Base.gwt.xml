@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.3.0//EN" "http://google-web-toolkit.googlecode.com/svn/tags/2.3.0/distro-source/core/src/gwt-module.dtd">
+<!--
+  ~ JBoss, Home of Professional Open Source
+  ~ Copyright 2012 Red Hat Inc. and/or its affiliates and other contributors
+  ~ as indicated by the @author tags. All rights reserved.
+  ~ See the copyright.txt in the distribution for a
+  ~ full listing of individual contributors.
+  ~
+  ~ This copyrighted material is made available to anyone wishing to use,
+  ~ modify, copy, or redistribute it subject to the terms and conditions
+  ~ of the GNU Lesser General Public License, v. 2.1.
+  ~ This program is distributed in the hope that it will be useful, but WITHOUT A
+  ~ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+  ~ PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+  ~ You should have received a copy of the GNU Lesser General Public License,
+  ~ v.2.1 along with this distribution; if not, write to the Free Software
+  ~ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+  ~ MA 02110-1301, USA.
+-->
+<module>
+  <inherits name="org.jboss.ballroom.Framework" />
+
+  <!-- Generator that builds ExtensionManager from ExtensionDefinition annotations. -->
+  <generate-with class="org.example.modular_mvp.base.rebind.ExtensionManagerGenerator">
+    <when-type-assignable class="org.example.modular_mvp.base.client.plugin.ExtensionManager" />
+  </generate-with>
+
+  <!-- Required for Ballroom Framework integration. -->
+  <replace-with class="org.example.modular_mvp.base.client.FrameworkImpl">
+    <when-type-is class="org.jboss.ballroom.client.spi.Framework" />
+  </replace-with>
+
+  <source path="client" />
+</module>
