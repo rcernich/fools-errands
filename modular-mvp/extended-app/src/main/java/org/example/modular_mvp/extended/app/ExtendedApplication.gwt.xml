@@ -26,7 +26,6 @@
   <inherits name="org.example.modular_mvp.extension.Extension" />
 
   <!-- We need to use the extended Ginjector. -->
-  <define-configuration-property name="gin.ginjector" is-multi-valued="false" />
   <set-configuration-property name="gin.ginjector"
     value="org.example.modular_mvp.extended.app.client.ExtendedApplicationGinjector" />
 
@@ -37,8 +36,5 @@
 
   <!-- Specify the paths for translatable code -->
   <source path='client' />
-
-  <!-- Notice we're using the same EntryPoint as the base application. -->
-  <entry-point class="org.example.modular_mvp.base.client.EntryPoint" />
 
 </module>

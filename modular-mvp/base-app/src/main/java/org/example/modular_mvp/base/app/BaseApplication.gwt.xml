@@ -22,15 +22,4 @@
   <!-- This module used to package Base up into a deployable war. -->
   <inherits name="org.example.modular_mvp.base.Base" />
 
-  <!-- As this is the base application, use the BaseGinjector. -->
-  <define-configuration-property name="gin.ginjector" is-multi-valued="false" />
-  <set-configuration-property name="gin.ginjector" value="org.example.modular_mvp.base.client.gin.BaseGinjector" />
-
-  <!-- As this is the base application, use the BaseGinjectorSingleton. -->
-  <replace-with class="org.example.modular_mvp.base.client.gin.BaseGinjectorSingleton">
-    <when-type-is class="org.example.modular_mvp.base.client.gin.GinjectorSingleton" />
-  </replace-with>
-
-  <!-- The EntryPoint, which is conveniently defined in Base. -->
-  <entry-point class="org.example.modular_mvp.base.client.EntryPoint" />
 </module>

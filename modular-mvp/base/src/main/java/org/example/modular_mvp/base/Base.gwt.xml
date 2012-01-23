@@ -31,5 +31,17 @@
     <when-type-is class="org.jboss.ballroom.client.spi.Framework" />
   </replace-with>
 
+  <!-- As this is the base application, use the BaseGinjector. -->
+  <define-configuration-property name="gin.ginjector" is-multi-valued="false" />
+  <set-configuration-property name="gin.ginjector" value="org.example.modular_mvp.base.client.gin.BaseGinjector" />
+
+  <!-- As this is the base application, use the BaseGinjectorSingleton. -->
+  <replace-with class="org.example.modular_mvp.base.client.gin.BaseGinjectorSingleton">
+    <when-type-is class="org.example.modular_mvp.base.client.gin.GinjectorSingleton" />
+  </replace-with>
+
+  <!-- The EntryPoint. -->
+  <entry-point class="org.example.modular_mvp.base.client.EntryPoint" />
+
   <source path="client" />
 </module>

@@ -41,7 +41,7 @@ import com.google.gwt.inject.client.Ginjector;
 public interface ExtensionGinjector extends Ginjector {
 
     /**
-     * @return the "built-in" content presenter.
+     * @return the "extension" content presenter.
      */
     public AsyncProvider<ExtensionContentPresenter> getExtensionContent();
 }
