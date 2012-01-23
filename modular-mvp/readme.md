@@ -15,8 +15,8 @@ This is due to some of the constraints MVP imposes on how an application is stru
 
 * Ginjector definition with get methods for EventBus, PlaceManager and all Presenter types.
   This is required during generation of the Proxy implementations for the presenters.
-* Ginjector creation, typically using 'GWT.create(MyGinjector.class)'.
-* Ginjector binding (i.e. 'DelayedBindRegistry.bind(ginjector)').  This binds the Ginjector
+* Ginjector creation, typically using `GWT.create(MyGinjector.class)`.
+* Ginjector binding (i.e. `DelayedBindRegistry.bind(ginjector)`).  This binds the Ginjector
   instance to the Presenter Proxy implementations.
 
 The above constraints make it difficult to dynamically construct a Ginjector interface, which
@@ -44,25 +44,25 @@ solution (e.g. dropping in a JAR).
 
 ###The Extension API
 
-The extension API is rather crude, but gets the job done.  A simple Annotation ('ExtensionDefinition') is defined, which
+The extension API is rather crude, but gets the job done.  A simple Annotation (`ExtensionDefinition`) is defined, which
 allows extensions to add content by adding the annotation to a class definition.  Typically,
 the annotation would be added to the Ginjector definition used by the extension, but there it can
 be applied to any class or interface.
 
-The 'ExtensionDefinition' simply allows extensions to define some display text, along with the
-place token that should be used to resolve the presenter (i.e. the place token should match the '@NameToken' defined on
+The `ExtensionDefinition` simply allows extensions to define some display text, along with the
+place token that should be used to resolve the presenter (i.e. the place token should match the `@NameToken` defined on
 the Presenter's proxy).
 
-A "manager" class is created using GWT code generation to implement an 'ExtensionManager'.  This interface
+A "manager" class is created using GWT code generation to implement an `ExtensionManager`.  This interface
 simply provides the base application with access to the defined extensions.  The base application uses
-the 'NavigatorItem' list when constructing the "Extensions" section of the navigator.
+the `NavigatorItem` list when constructing the "Extensions" section of the navigator.
 
-Boiling it down, this extension mechanism simply provides links ('NameToken's) for resolving the extended
+Boiling it down, this extension mechanism simply provides links (`NameToken`s) for resolving the extended
 functionality.
 
-###The 'GinjectorSingleton'
+###The `GinjectorSingleton`
 
-The 'GinjectorSingleton' is what enables the base application to use an extended Ginjector.  This "double indirection,"
+The `GinjectorSingleton` is what enables the base application to use an extended Ginjector.  This "double indirection,"
 gives the extended application the ability to instantiate the specific Ginjector type that will be used
 by the application.
 
@@ -70,10 +70,10 @@ by the application.
 
 The extended application then needs to do the following:
 * Define a Ginjector interface that "mixes in" the Ginjector interfaces for the base application, plus all extensions.
-* Define a 'GinjectorSingleton' implementation that creates an instance of the extended Ginjector.
+* Define a `GinjectorSingleton` implementation that creates an instance of the extended Ginjector.
 * Define a module that includes the modules for the base application, plus all extensions.
-* Define a 'replace-with' for 'GinjectorSingleton'.
-* Define a 'gin.ginjector' property, set to the extended Ginjector.
+* Define a `replace-with` for `GinjectorSingleton`.
+* Define a `gin.ginjector` property, set to the extended Ginjector.
 
 ###Project Structure
 
@@ -85,16 +85,12 @@ This project is composed of the following parts:
   * EntryPoint
   * Ginjector definition
   * Plug-in/extension API
-* **modular-mvp-base-app** (base-app) - packaged as a WAR, this project provides the settings required for execution:
-  * gin.ginjector property setting
-  * Ginjector creation
-  * entry-point definition
+* **modular-mvp-base-app** (base-app) - this project simply packages modular-mvp-base as a WAR. 
 * **modular-mvp-extension** (extension) - packaged as a module, this project defines an extension to the base application, including:
   * Additional Presenters
-  * Ginjector definition
+  * Extension Ginjector definition
   * Extension definition
 * **modular-mvp-extended-app** (extended-app) - packaged as a WAR, this project provides the settings required for execution, including:
-  * An extended Ginjector definition
+  * An extended, mix-in type Ginjector definition
   * gin.ginjector property setting
-  * Ginjector creation
-  * entry-point definition
+  * Ginjector creation (i.e. `ExtendedApplicationSingleton`)
