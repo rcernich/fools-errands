@@ -46,7 +46,7 @@ solution (e.g. dropping in a JAR).
 
 The extension API is rather crude, but gets the job done.  A simple Annotation (`ExtensionDefinition`) is defined, which
 allows extensions to add content by adding the annotation to a class definition.  Typically,
-the annotation would be added to the Ginjector definition used by the extension, but there it can
+the annotation would be added to the Ginjector definition used by the extension, but it can
 be applied to any class or interface.
 
 The `ExtensionDefinition` simply allows extensions to define some display text, along with the
@@ -69,6 +69,7 @@ by the application.
 ###The "Extended" Application
 
 The extended application then needs to do the following:
+
 * Define a Ginjector interface that "mixes in" the Ginjector interfaces for the base application, plus all extensions.
 * Define a `GinjectorSingleton` implementation that creates an instance of the extended Ginjector.
 * Define a module that includes the modules for the base application, plus all extensions.
