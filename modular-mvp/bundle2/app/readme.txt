@@ -1,0 +1,1 @@
+This project produces the composite WAR, using bundle/app-parent with a customized Ginjector and extension set.

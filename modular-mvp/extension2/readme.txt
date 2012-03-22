@@ -1,0 +1,1 @@
+This is a stand-alone project providing an extension to the base application.

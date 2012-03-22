@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <!-- POM file generated with GWT webAppCreator -->
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>modular-mvp-bundle</artifactId>
+    <groupId>org.example.modular-mvp</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <artifactId>modular-mvp-bundle-app-parent</artifactId>
+  <packaging>pom</packaging>
+  <name>Modular MVP: Application Bundler Parent</name>
+  <description>Parent project for building application wars.</description>
+
+  <properties>
+    <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.example.modular-mvp</groupId>
+      <artifactId>modular-mvp-bundle-gin</artifactId>
+      <version>${project.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.example.modular-mvp</groupId>
+      <artifactId>modular-mvp-base-app</artifactId>
+      <type>war</type>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.inject</groupId>
+      <artifactId>guice</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.inject.extensions</groupId>
+      <artifactId>guice-assistedinject</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt.inject</groupId>
+      <artifactId>gin</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <!-- Generate compiled stuff in the folder used for developing mode -->
+    <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
+    <finalName>application</finalName>
+
+    <plugins>
+      <!-- GWT Maven Plugin -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <goal>test</goal>
+            </goals>
+          </execution>
+        </executions>
+        <!-- Plugin configuration. There are many available options, see gwt-maven-plugin documentation at codehaus.org -->
+        <configuration>
+          <compileReport>false</compileReport>
+          <hostedWebapp>${webappDirectory}</hostedWebapp>
+          <logLevel>TRACE</logLevel>
+          <runTarget>Application.html</runTarget>
+          <extraJvmArgs>-Xmx512m</extraJvmArgs>
+          <localWorkers>2</localWorkers>
+          <module>org.example.modular_mvp.bundle.Application</module>
+        </configuration>
+      </plugin>
+
+      <!-- Copy static web files before executing gwt:run -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>exploded</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <overlays>
+            <overlay>
+              <groupId>org.example.modular-mvp</groupId>
+              <artifactId>modular-mvp-base-app</artifactId>
+              <includes>
+                <include>Application.html</include>
+                <include>index.html</include>
+                <include>WEB-INF/web.xml</include>
+              </includes>
+            </overlay>
+          </overlays>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <!-- Remove GWT tests -->
+        <configuration>
+          <excludes>
+            <exclude>**/GwtTest*.java</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

@@ -3,60 +3,148 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <!-- POM file generated with GWT webAppCreator -->
-  <parent>
-    <artifactId>modular-mvp-parent</artifactId>
-    <groupId>org.example.modular-mvp</groupId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
   <modelVersion>4.0.0</modelVersion>
+  <groupId>org.example.modular-mvp</groupId>
   <artifactId>modular-mvp-extension</artifactId>
-  <packaging>jar</packaging>
-  <name>Modular MVP: Extension</name>
-  <description>Extended UI module.</description>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Modular MVP: Extension Project</name>
+  <description>Extension project providing an extension to the base UI module.</description>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.example.modular-mvp</groupId>
-      <artifactId>modular-mvp-base</artifactId>
-      <version>${project.version}</version>
-      <scope>provided</scope>
-    </dependency>
+  <modules>
+    <module>lib</module>
+    <module>app</module>
+  </modules>
 
-    <dependency>
-      <groupId>org.jboss.ballroom</groupId>
-      <artifactId>widgets</artifactId>
-      <scope>provided</scope>
-    </dependency>
+  <properties>
+    <version.base>0.0.1-SNAPSHOT</version.base>
+    <!-- plugin versions -->
+    <version.maven.compiler.plugin>2.3.2</version.maven.compiler.plugin>
+    <version.maven.gwt.plugin>2.3.0</version.maven.gwt.plugin>
+    <version.maven.jar.plugin>2.3.1</version.maven.jar.plugin>
+    <version.maven.surefire.plugin>2.6</version.maven.surefire.plugin>
+    <version.maven.war.plugin>2.1.1</version.maven.war.plugin>
+  </properties>
 
-    <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-user</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.gwtplatform</groupId>
-      <artifactId>gwtp-mvp-client</artifactId>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
+  <repositories>
+    <repository>
+      <id>jboss-public-repository-group</id>
+      <name>JBoss Public Maven Repository Group</name>
+      <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+      <layout>default</layout>
+      <releases>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <updatePolicy>never</updatePolicy>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.example.modular-mvp</groupId>
+        <artifactId>modular-mvp-base</artifactId>
+        <version>${version.base}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.example.modular-mvp</groupId>
+        <artifactId>modular-mvp-base-lib</artifactId>
+        <version>${version.base}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${version.maven.compiler.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${version.maven.jar.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>${version.maven.war.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${version.maven.surefire.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>gwt-maven-plugin</artifactId>
+          <version>${version.maven.gwt.plugin}</version>
+        </plugin>
+        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven
+          build itself. -->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <versionRange>[2.1.1,)</versionRange>
+                    <goals>
+                      <goal>exploded</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <execute />
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
     <plugins>
-      <!-- GWT Maven Plugin -->
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>gwt-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>resources</goal>
-            </goals>
-          </execution>
-        </executions>
-        <!-- Plugin configuration. There are many available options, see gwt-maven-plugin documentation at codehaus.org -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <dependencies>
+          <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.4</version>
+          </dependency>
+        </dependencies>
         <configuration>
-          <logLevel>TRACE</logLevel>
-          <extraJvmArgs>-Xmx512m</extraJvmArgs>
+          <archive>
+            <manifest>
+              <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+            </manifest>
+            <addMavenDescriptor>true</addMavenDescriptor>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+          <debug>true</debug>
+          <showWarnings>true</showWarnings>
+          <showDeprecation>true</showDeprecation>
         </configuration>
       </plugin>
     </plugins>

@@ -1,0 +1,1 @@
+This is a stand-alone project used for bundling a composite application, including the base and all extensions.

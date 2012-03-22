@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <!-- POM file generated with GWT webAppCreator -->
+  <parent>
+    <artifactId>modular-mvp-bundle-app-parent</artifactId>
+    <groupId>org.example.modular-mvp</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../../bundle/app-parent/pom.xml</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.example.modular-mvp</groupId>
+  <artifactId>modular-mvp-extension-app</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>Modular MVP: Extended Application</name>
+  <description>Bundled application which includes the latest version of this extension.</description>
+
+  <!-- This file is essentially a copy of bundle/app. With the following excpetions:
+    * The included gin dependency matches the version of the included bundle.
+    * The version of our extension is changed to our current version.
+  -->
+  <properties>
+    <!-- override the extension version with our current version. -->
+    <version.extension>${project.version}</version.extension>
+  </properties>
+
+</project>

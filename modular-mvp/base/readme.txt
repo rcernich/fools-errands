@@ -1,0 +1,1 @@
+This is a stand-alone project representing a "base" application supporting extension.

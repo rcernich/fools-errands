@@ -16,22 +16,26 @@
   ~ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
   ~ MA 02110-1301, USA.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.example.modular-mvp</groupId>
-  <artifactId>modular-mvp-parent</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>Modular MVP: Parent</name>
-  <description>Parent project for modular MVP example</description>
 
-  <modules>
-    <module>base</module>
-    <module>extension</module>
-    <module>extension2</module>
-    <module>bundle</module>
-    <module>bundle2</module>
-  </modules>
+<module rename-to="Application">
+  <!--
+    This module us used to package extended functionality into a deployable war.
+    The module has been renamed to match the BaseApplication module name, which allows
+    the same html entry to be used by both applications (if desired).
+  -->
+  <inherits name="org.example.modular_mvp.base.Base" />
+  <inherits name="org.example.modular_mvp.extension2.Extension2" />
 
-</project>
+  <!-- We need to use the extended Ginjector. -->
+  <set-configuration-property name="gin.ginjector"
+    value="org.example.modular_mvp.bundle2.client.Application2Ginjector" />
+
+  <!-- Once again, we need a singleton implementation that serves up the extended Ginjector. -->
+  <replace-with class="org.example.modular_mvp.bundle2.client.Application2Singleton">
+    <when-type-is class="org.example.modular_mvp.base.client.gin.GinjectorSingleton" />
+  </replace-with>
+
+  <!-- Specify the paths for translatable code -->
+  <source path='client' />
+
+</module>

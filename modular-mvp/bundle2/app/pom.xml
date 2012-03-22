@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <!-- POM file generated with GWT webAppCreator -->
+  <parent>
+    <artifactId>modular-mvp-bundle-app-parent</artifactId>
+    <groupId>org.example.modular-mvp</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../../bundle/app-parent/pom.xml</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>modular-mvp-bundle2-app</artifactId>
+  <packaging>war</packaging>
+  <name>Modular MVP: Custom Application</name>
+  <description>Custom bundled MVP application with additional UI.</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.example.modular-mvp</groupId>
+      <artifactId>modular-mvp-bundle2-gin</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>custom-application</finalName>
+
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <!-- overwrite the inherited module -->
+        <configuration>
+          <module>org.example.modular_mvp.bundle2.Application2</module>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -5,24 +5,17 @@
   <!-- POM file generated with GWT webAppCreator -->
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.example.modular-mvp</groupId>
-  <artifactId>modular-mvp-base</artifactId>
+  <artifactId>modular-mvp-bundle</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>Modular MVP: Base Project</name>
-  <description>Base project containing the extensible application.</description>
-
-  <modules>
-    <module>lib</module>
-    <module>app</module>
-  </modules>
+  <name>Modular MVP: Application Bundle</name>
+  <description>Parent project for application bundle.</description>
 
   <properties>
-    <version.ballroom>1.0.0.CR1</version.ballroom>
-    <version.gin>1.5_past22</version.gin>
-    <version.guice>3.0</version.guice>
-    <version.gwt>2.3.0</version.gwt>
-    <version.gwtp>0.6</version.gwtp>
-    <version.junit>4.8.1</version.junit>
+    <!-- application module versions -->
+    <version.base>0.0.1-SNAPSHOT</version.base>
+    <version.extension>0.0.1-SNAPSHOT</version.extension>
+    <version.extension2>0.0.1-SNAPSHOT</version.extension2>
     <!-- plugin versions -->
     <version.maven.compiler.plugin>2.3.2</version.maven.compiler.plugin>
     <version.maven.gwt.plugin>2.3.0</version.maven.gwt.plugin>
@@ -30,6 +23,12 @@
     <version.maven.surefire.plugin>2.6</version.maven.surefire.plugin>
     <version.maven.war.plugin>2.1.1</version.maven.war.plugin>
   </properties>
+
+  <modules>
+    <module>gin</module>
+    <module>app-parent</module>
+    <module>app</module>
+  </modules>
 
   <repositories>
     <repository>
@@ -48,65 +47,38 @@
 
   <dependencyManagement>
     <dependencies>
-
       <dependency>
-        <groupId>org.jboss.ballroom</groupId>
-        <artifactId>widgets</artifactId>
-        <version>${version.ballroom}</version>
+        <groupId>org.example.modular-mvp</groupId>
+        <artifactId>modular-mvp-base</artifactId>
+        <version>${version.base}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
 
-      <!-- GWT related -->
+      <!-- base war overlay -->
       <dependency>
-        <groupId>com.google.gwt</groupId>
-        <artifactId>gwt-servlet</artifactId>
-        <version>${version.gwt}</version>
+        <groupId>org.example.modular-mvp</groupId>
+        <artifactId>modular-mvp-base-app</artifactId>
+        <type>war</type>
+        <version>${version.base}</version>
       </dependency>
 
+      <!-- application components, including extensions. -->
       <dependency>
-        <groupId>com.google.gwt</groupId>
-        <artifactId>gwt-user</artifactId>
-        <version>${version.gwt}</version>
+        <groupId>org.example.modular-mvp</groupId>
+        <artifactId>modular-mvp-base-lib</artifactId>
+        <version>${version.base}</version>
       </dependency>
-
       <dependency>
-        <groupId>com.gwtplatform</groupId>
-        <artifactId>gwtp-mvp-client</artifactId>
-        <version>${version.gwtp}</version>
+        <groupId>org.example.modular-mvp</groupId>
+        <artifactId>modular-mvp-extension-lib</artifactId>
+        <version>${version.extension}</version>
       </dependency>
-
       <dependency>
-        <groupId>com.google.inject</groupId>
-        <artifactId>guice</artifactId>
-        <version>${version.guice}</version>
+        <groupId>org.example.modular-mvp</groupId>
+        <artifactId>modular-mvp-extension2-lib</artifactId>
+        <version>${version.extension2}</version>
       </dependency>
-
-      <dependency>
-        <groupId>com.google.inject.extensions</groupId>
-        <artifactId>guice-assistedinject</artifactId>
-        <version>${version.guice}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>com.google.gwt.inject</groupId>
-        <artifactId>gin</artifactId>
-        <version>${version.gin}</version>
-      </dependency>
-
-      <!-- test/debug -->
-      <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>${version.junit}</version>
-        <scope>test</scope>
-      </dependency>
-
-      <dependency>
-        <groupId>com.google.gwt</groupId>
-        <artifactId>gwt-dev</artifactId>
-        <version>${version.gwt}</version>
-        <scope>test</scope>
-      </dependency>
-
     </dependencies>
   </dependencyManagement>
 

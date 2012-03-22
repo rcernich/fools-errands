@@ -1,0 +1,1 @@
+This project produces the composite WAR, using the configuration in app-parent.

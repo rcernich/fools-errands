@@ -1,0 +1,1 @@
+This project defines the aggregate Ginjector interface and GinjectorSingleton, incorporating all extensions.
