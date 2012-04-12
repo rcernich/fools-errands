@@ -128,3 +128,12 @@ This project is composed of the following parts:
      * GWT module being compiled to "Application2" module defined in modular-mvp-bundle2-gin
      * The name of the WAR.
 
+## Running the Examples
+
+### Eclipse
+
+Modify the GWT "Web Application" settings to use the exploded war directory in the output folders, e.g. target/application.
+
+When prompted for the HTML page to use (after selecting Run As -> Web Application), make sure "Show Derived Resources" is checked (if you don't see any html files, this is the problem).
+
+You may need to manually adjust the run configuration by adding the module name to the end of the program arguments, e.g. org.example.modular_mvp.bundle.Application.  (I believe this is because the "module" is configured in the parent pom.)
