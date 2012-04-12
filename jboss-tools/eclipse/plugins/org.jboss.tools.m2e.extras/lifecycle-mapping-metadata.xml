@@ -69,7 +69,8 @@
         <versionRange>[2.0,)</versionRange>
         <goals>
           <goal>i18n</goal>
-          <goal>resources</goal>
+          <goal>compile</goal>
+          <goal>generateAsync</goal>
         </goals>
       </pluginExecutionFilter>
       <action>
@@ -77,6 +78,19 @@
           <id>org.jboss.tools.m2e.extras.genericSourceConfigurator</id>
           <outputDirectoryProperty>generateDirectory</outputDirectoryProperty>
         </configurator>
+      </action>
+    </pluginExecution>
+    <pluginExecution>
+      <pluginExecutionFilter>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <versionRange>[2.0,)</versionRange>
+        <goals>
+          <goal>resources</goal>
+        </goals>
+      </pluginExecutionFilter>
+      <action>
+        <ignore/>
       </action>
     </pluginExecution>
   </pluginExecutions>
